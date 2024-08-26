@@ -1,0 +1,158 @@
+{
+  "main": {
+    "id": "63d76445fdeca2ab",
+    "type": "split",
+    "children": [
+      {
+        "id": "86c455844617827e",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "a2c7fc117fdd01c3",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "PicoCTF/Desencriptado.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "d9c45d670de4f24e",
+    "type": "split",
+    "children": [
+      {
+        "id": "60d38653521d124b",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "1fc63e6e1dcc5813",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "f8e6a66e3bb98006",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "d422f9fc65f4ee63",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "d40a35538e97a632",
+    "type": "split",
+    "children": [
+      {
+        "id": "c832966e88b02c5f",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "74a123222cf99987",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "PicoCTF/Desencriptado.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "56d819d853424bc0",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "PicoCTF/Desencriptado.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "416954c916e8bb1a",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "7b5a944cec0658f1",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "PicoCTF/Desencriptado.md"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false
+    }
+  },
+  "active": "a2c7fc117fdd01c3",
+  "lastOpenFiles": [
+    "PicoCTF/Web explotation.md",
+    "PicoCTF/Forensics.md",
+    "PicoCTF/Desencriptado.md",
+    "SQL Injection Fundamentals.md",
+    "PicoCTF",
+    "Welcome.md"
+  ]
+}
