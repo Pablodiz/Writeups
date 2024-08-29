@@ -38,4 +38,4 @@ for i in range(n_letras):
         print(salida)
 ```
 
-Efectivamente, esto me devuelve el flag
+Efectivamente, esto me devuelve el flag: `picoCTF{C7r1F_54V35_71M3}`
