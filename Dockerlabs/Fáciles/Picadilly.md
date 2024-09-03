@@ -43,8 +43,7 @@ Hay un directorio uploads, en el que se encuentran los archivos:
 ![](../Imágenes/Pasted%20image%2020240903170750.png)
 ![](../Imágenes/Pasted%20image%2020240903170818.png)
 
-Intentaré subir una command line de php como la usado en la máquina "Dockerlabs":
-#TODO insertar enlace cuando separe las máquinas por ficheros
+Intentaré subir una command line de php como la usado en la máquina [Dockerlabs](./Dockerlabs):
 ```php
 SHELL:  
 <html>
