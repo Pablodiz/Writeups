@@ -1,4 +1,5 @@
-Fecha: 03/08/2024
+Fecha: 03/09/2024
+
 Empiezo escaneando la máquina: 
 ```
 sudo nmap -p- -sS -sC -sV --min-rate 5000 -n -Pn 172.17.0.2 -oN scan
