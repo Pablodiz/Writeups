@@ -1,7 +1,7 @@
 Fecha: 07/08/2024
 Empiezo haciendo un nmap completo, veo que tiene un apache en el puerto 80.
 
-![](Imágenes/Pasted%20image%2020240807002812.png)
+![](../Fáciles/Imágenes/Pasted%20image%2020240807002812.png)
 
 Primero busqué vulnerabilidades en esos servicios, pero no las encontré con searchsploit
 

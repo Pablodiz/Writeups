@@ -36,4 +36,4 @@ Busco en gtfobin y veo que haciendo el siguiente comando me convierto en root:
 sudo vim -c ':!/bin/sh'
 ```
 
-![](Imágenes/Pasted%20image%2020240807181815.png)
+![](../Fáciles/Imágenes/Pasted%20image%2020240807181815.png)
