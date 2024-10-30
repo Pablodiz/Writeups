@@ -61,7 +61,7 @@ def crear_matriz(grupos, mensaje_cifrado, N):
         elif fila == N - 1:
             descendente = False 
         try:
-            matriz[fila][columna] = grupos[fila][indices[fila]]
+            matriz[fila][columna] = grupos[fila][indices[fila)
         except: # No hay más caracteres en el grupo
             pass 
 

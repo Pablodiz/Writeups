@@ -4,15 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "221ef0c8d4f7204c",
+        "id": "007a5ae69630385c",
         "type": "tabs",
         "children": [
           {
-            "id": "ae27b48513823dc6",
+            "id": "34b18aba2501a76a",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {}
+              "type": "markdown",
+              "state": {
+                "file": "picoCTF/General Skills/Medium/Permissions.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Permissions"
             }
           }
         ]
@@ -35,7 +41,9 @@
               "type": "file-explorer",
               "state": {
                 "sortOrder": "alphabetical"
-              }
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
             }
           },
           {
@@ -50,7 +58,9 @@
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical"
-              }
+              },
+              "icon": "lucide-search",
+              "title": "Search"
             }
           },
           {
@@ -58,14 +68,16 @@
             "type": "leaf",
             "state": {
               "type": "bookmarks",
-              "state": {}
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
             }
           }
         ]
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 483.5
   },
   "right": {
     "id": "52b27cc1066614f1",
@@ -81,6 +93,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "picoCTF/General Skills/Easy/Tab, Tab attack.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -88,7 +101,9 @@
                 "searchQuery": "",
                 "backlinkCollapsed": false,
                 "unlinkedCollapsed": true
-              }
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for Tab, Tab attack"
             }
           },
           {
@@ -97,9 +112,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "picoCTF/General Skills/Easy/Tab, Tab attack.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
-              }
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from Tab, Tab attack"
             }
           },
           {
@@ -110,7 +128,9 @@
               "state": {
                 "sortOrder": "frequency",
                 "useHierarchy": true
-              }
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
             }
           },
           {
@@ -118,7 +138,11 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {}
+              "state": {
+                "file": "picoCTF/General Skills/Easy/Tab, Tab attack.md"
+              },
+              "icon": "lucide-list",
+              "title": "Outline of Tab, Tab attack"
             }
           }
         ]
@@ -138,6 +162,45 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "ae27b48513823dc6",
-  "lastOpenFiles": []
+  "active": "34b18aba2501a76a",
+  "lastOpenFiles": [
+    "picoCTF/General Skills/Medium/SansAlpha.md",
+    "picoCTF/General Skills/Easy/imágenes/Pasted image 20241030015955.png",
+    "picoCTF/General Skills/Easy/imágenes/Pasted image 20241030015511.png",
+    "picoCTF/General Skills/Easy/imágenes/Pasted image 20241030015240.png",
+    "picoCTF/General Skills/Easy/imágenes/Pasted image 20241030014723.png",
+    "picoCTF/General Skills/Easy/Glitch cat.md",
+    "picoCTF/General Skills/Easy/Hashingjobapp.md",
+    "picoCTF/General Skills/Easy/fixme1, 2.py.md",
+    "picoCTF/General Skills/Easy/first grep.md",
+    "picoCTF/General Skills/Easy/First Find.md",
+    "picoCTF/General Skills/Easy/Convertme.py.md",
+    "picoCTF/General Skills/Easy/Commitment issues.md",
+    "picoCTF/General Skills/Easy/Collaborative Development.md",
+    "picoCTF/General Skills/Easy/Codebook.md",
+    "picoCTF/General Skills/Easy/Blame Game.md",
+    "picoCTF/General Skills/Easy/Binary Search.md",
+    "picoCTF/General Skills/Easy/Big Zip.md",
+    "picoCTF/General Skills/Easy/bases.md",
+    "picoCTF/General Skills/Easy/2warm, Warmed Up.md",
+    "picoCTF/General Skills/Easy/imágenes/Pasted image 20240911205331.png",
+    "picoCTF/General Skills/Easy/imágenes/Pasted image 20240911205349.png",
+    "picoCTF/General Skills/Easy/imágenes/Pasted image 20240911205642.png",
+    "picoCTF/General Skills/Easy/imágenes/Pasted image 20241030020653.png",
+    "Imágenes/Pasted.md",
+    "Imágenes",
+    "picoCTF/General Skills/Easy/Tab, Tab attack.md",
+    "picoCTF/General Skills/Easy/Time Machine.md",
+    "picoCTF/General Skills/Easy/imágenes/Pasted image 20241030013052.png",
+    "picoCTF/General Skills/Easy/imágenes/Pasted image 20241030023713.png",
+    "picoCTF/Waves over lambda.md",
+    "Pasted.md",
+    "picoCTF/General Skills/Medium/Permissions.md",
+    "picoCTF/General Skills/Easy/Repetitions.md",
+    "picoCTF/General Skills/Easy/strings it.md",
+    "picoCTF/General Skills/Easy/Nice netcat.md",
+    "picoCTF/Forensics/Easy/Secret of the Polyglot.md",
+    "picoCTF/Forensics/Easy/Untitled.md",
+    "picoCTF/Forensics/Medium"
+  ]
 }

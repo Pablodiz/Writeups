@@ -7,7 +7,7 @@ from PIL import Image
 import numpy as np 
 
 # Abrir las imágenes
-entradas = [Image.open(i) for i in ["./scrambled1.png", "./scrambled2.png"]]
+entradas = [Image.open(i) for i in ["./scrambled1.png", "./scrambled2.png")
 
 # Comprobar que los tamaños son los mismos
 for imagen in entradas:
